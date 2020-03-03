@@ -1,0 +1,14 @@
+export PATH="~/.local/bin/:$PATH"
+findspark.init('PATH_HERE')
+
+create table test_table(txnno INT, txndate STRING, value DOUBLE) row format delimited fields terminated by ',' stored as textfile;
+
+LOAD DATA INPATH '/txnsl.txt' OVERWRITE INTO TABLE test_table;
+
+Login to hive
+Run "create database test"
+run "Use test"
+copy the attached text file from your machine onto HDFS on the same server
+Run the following: create table hive_test(txnno INT, txndate STRING, value DOUBLE) row format delimited fields terminated by ',' stored as textfile;
+Load the test file into the table you have created (please replace path with wherever you have put in HDFS) : LOAD DATA INPATH '/hive_test.txt' OVERWRITE INTO TABLE test_table;
+
